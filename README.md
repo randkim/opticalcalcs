@@ -1,4 +1,4 @@
-# opticalcalcs
+# Laser Optics Calculations
 Python script for performing (for now) basic laser optics calculations.
 
 Once the code gets long enough, the script will be updated into a class such that editing and using will be easier.
