@@ -57,19 +57,3 @@ def aom_solve_z_collimated(wavelength, beamwaist, focal_length, desired_beamwais
 def diffraction_limit(wavelength, focal_length, beamwaist):
     limit = 1.22*focal_length*wavelength/(2*beamwaist)
     return limit
-
-
-wavelength = 355*10**(-9)
-beamwaist = 510*10**(-6)
-focal_length = 100*10**(-3)
-
-
-new_beamwaist, z_wanted = aom_solve_z_collimated(wavelength, beamwaist, focal_length, 100*10**(-6))
-print(np.format_float_positional(z_wanted*10**(3), precision=3), 'mm')
-print(np.format_float_positional(new_beamwaist*10**(6), precision=3), 'um')
-
-limit = diffraction_limit(wavelength, focal_length, beamwaist)
-print(np.format_float_positional(limit*10**(6), precision=3), 'um')
-
-beamwaist2, beamwaist2_loc, z_0_2 = two_lens_bw_collimated(wavelength, beamwaist, 150*10**(-3), 150*10**(-3), 15.5*10**(-2))
-print(beamwaist2, beamwaist2_loc, z_0_2)
