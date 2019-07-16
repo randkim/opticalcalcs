@@ -33,6 +33,18 @@ def two_lens_bw_collimated(wavelength, beamwaist, focal_length, focal_length2, d
     z_0_new = rayleigh_range(wavelength, new_new_beamwaist)
     
     return new_new_beamwaist, new_new_beamwaist_location, z_0_new
+
+def three_lens_bw_collimated(wavelength, beamwaist, focal_length, focal_length2, focal_length3, dist_from_beamwaist, lens23_seperation):
+    
+    new_beamwaist = lens_bw_collimated(wavelength, beamwaist, focal_length)
+    
+    new_new_beamwaist, new_new_beamwaist_location = lens_bw(focal_length2, new_beamwaist, dist_from_beamwaist)
+    
+    new_new_new_beamwaist, new_new_new_beamwaist_location = lens_bw(focal_length3, new_new_beamwaist, lens23_seperation - new_new_beamwaist_location)
+    
+    z_0_new_new = rayleigh_range(wavelength, new_new_new_beamwaist)
+    
+    return new_new_new_beamwaist, new_new_new_beamwaist_location, z_0_new_new
     
 
 def beam_divergence(wavelength, beamwaist, z):
